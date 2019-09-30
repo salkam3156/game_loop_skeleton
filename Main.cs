@@ -7,6 +7,7 @@ namespace SFML_Lechu
 {
     class MainApp
     {
+        //TODO: manager / system for shape generation on per-interval basis
         private static IList<RectangleShape> _rectangles = new List<RectangleShape>() {
             new RectangleShape(new Vector2f(50.0f, 50.0f)) {Position = new Vector2f(10.0f, 10.0f)},
             new RectangleShape(new Vector2f(50.0f, 50.0f)) {Position = new Vector2f(20.0f, 20.0f)},
@@ -18,6 +19,12 @@ namespace SFML_Lechu
         {
             using (var game = Game.Instance)
             {
+                //Generate
+
+                //Handle input
+
+                //Draw
+                //TODO: move to scene manager etc.
                 var renderTarget = game.RenderTarget;
                 renderTarget.Clear();
 
@@ -27,6 +34,8 @@ namespace SFML_Lechu
                 }
 
                 renderTarget.Display();
+
+                //Update state
             }
         }
     }

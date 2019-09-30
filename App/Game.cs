@@ -16,7 +16,7 @@ namespace SFML_Lechu.App
         }
         private Game()
         {
-            _gameWindow = new RenderWindow(VideoMode.DesktopMode, "Lechu");
+            _gameWindow = new RenderWindow(VideoMode.DesktopMode, "AppWindow");
         }
 
         #region Dispose

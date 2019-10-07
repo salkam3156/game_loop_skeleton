@@ -7,9 +7,9 @@ namespace game_loop_skeleton.Utils
 {
     public class TextureLoader : ITextureLoader
     {
-        public IList<Texture> LoadTexturesFrom(string bitmap)
+        public IList<Texture> GetTexturesFrom(string bitmap)
         {
-            throw new NotImplementedException();
+            return new List<Texture> { new Texture(@"C:\Users\salka\Desktop\game_loop_skeleton\bin\Debug\netcoreapp2.2\ace.png") };
         }
     }
 }

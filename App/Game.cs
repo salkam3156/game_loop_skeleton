@@ -13,7 +13,7 @@ namespace SFML_Lechu.App
         public static Game Instance => _instance.Value;
         private Game()
         {
-            _gameWindow = new RenderWindow(VideoMode.DesktopMode, "AppWindow");
+            _gameWindow = new RenderWindow(VideoMode.DesktopMode, "Solitaire");
         }
 
         #region Dispose

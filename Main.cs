@@ -2,23 +2,21 @@
 using SFML.Graphics;
 using SFML_Lechu.App;
 using SFML.System;
+using game_loop_skeleton.Utils;
 
 namespace SFML_Lechu
 {
     class MainApp
     {
-        //TODO: manager / system for shape generation on per-interval basis
-        private static IList<RectangleShape> _rectangles = new List<RectangleShape>() {
-            new RectangleShape(new Vector2f(50.0f, 50.0f)) {Position = new Vector2f(10.0f, 10.0f)},
-            new RectangleShape(new Vector2f(50.0f, 50.0f)) {Position = new Vector2f(20.0f, 20.0f)},
-            new RectangleShape(new Vector2f(50.0f, 50.0f)) {Position = new Vector2f(30.0f, 30.0f)},
-            new RectangleShape(new Vector2f(50.0f, 50.0f)) {Position = new Vector2f(40.0f, 40.0f)},
-        };
-
         static void Main(string[] args)
         {
             using (var game = Game.Instance)
             {
+                //Scribbles/debug
+                var textureLoader = new TextureLoader();
+                var texture = new Texture(@"C:\Users\salka\Desktop\game_loop_skeleton\bin\Debug\netcoreapp2.2\ace.png");
+                var sprite = new Sprite(texture);
+
                 //Generate
 
                 //Handle input
@@ -28,10 +26,7 @@ namespace SFML_Lechu
                 var renderTarget = game.RenderTarget;
                 renderTarget.Clear();
 
-                foreach (var rect in _rectangles)
-                {
-                    renderTarget.Draw(rect as Drawable);
-                }
+                renderTarget.Draw(sprite);
 
                 renderTarget.Display();
 

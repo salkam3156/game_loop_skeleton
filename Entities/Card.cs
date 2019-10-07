@@ -5,10 +5,10 @@ namespace game_loop_skeleton.Entities
 {
     public class Card
     {
-        private readonly Texture _texture;
+        private Sprite Sprite { get; }
         public Card(TextureFlyweight textureFlyweight, /*placeholder for now*/ int deckIndex)
         {
-            _texture = textureFlyweight.Textures[deckIndex];
+            Sprite = new Sprite(textureFlyweight.Textures[deckIndex]);
         }
     }
 }

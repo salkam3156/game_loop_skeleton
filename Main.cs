@@ -3,6 +3,11 @@ using SFML.Graphics;
 using SFML_Lechu.App;
 using SFML.System;
 using game_loop_skeleton.Utils;
+using System;
+
+using System.Threading.Tasks;
+using System.Threading;
+using game_loop_skeleton.Entities;
 
 namespace SFML_Lechu
 {
@@ -10,12 +15,16 @@ namespace SFML_Lechu
     {
         static void Main(string[] args)
         {
+
             using (var game = Game.Instance)
             {
                 //Scribbles/debug
+                var rand = new Random();
                 var textureLoader = new TextureLoader();
-                var texture = new Texture(@"C:\Users\salka\Desktop\game_loop_skeleton\bin\Debug\netcoreapp2.2\ace.png");
-                var sprite = new Sprite(texture);
+
+                var textureFlyweight = new TextureFlyweight(@"res\ace.png", textureLoader);
+                textureFlyweight.Initialize();
+                var testEntCards = new List<Card> { new Card(textureFlyweight, deckIndex: 0) };
 
                 //Generate
 
@@ -24,11 +33,13 @@ namespace SFML_Lechu
                 //Draw
                 //TODO: move to scene manager etc.
                 var renderTarget = game.RenderTarget;
-                renderTarget.Clear();
 
-                renderTarget.Draw(sprite);
-
-                renderTarget.Display();
+                foreach (var card in testEntCards)
+                {
+                    renderTarget.Clear();
+                    renderTarget.Draw(card.Sprite);
+                    renderTarget.Display();
+                }
 
                 //Update state
             }

@@ -26,6 +26,8 @@ namespace SFML_Lechu
                 textureFlyweight.Initialize();
                 var testEntCards = new List<Card> { new Card(textureFlyweight, deckIndex: 0) };
 
+
+
                 //Generate
 
                 //Handle input
@@ -34,9 +36,12 @@ namespace SFML_Lechu
                 //TODO: move to scene manager etc.
                 var renderTarget = game.RenderTarget;
 
+                var bg = new Backgroud(@"res\bg.png", renderTarget.Size.X, renderTarget.Size.Y);
+
                 foreach (var card in testEntCards)
                 {
                     renderTarget.Clear();
+                    renderTarget.Draw(bg.Sprite); 
                     renderTarget.Draw(card.Sprite);
                     renderTarget.Display();
                 }

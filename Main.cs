@@ -4,6 +4,7 @@ using SFML_Lechu.App;
 using SFML.System;
 using game_loop_skeleton.Utils;
 using System;
+using System.IO;
 
 using System.Threading.Tasks;
 using System.Threading;
@@ -33,13 +34,29 @@ namespace SFML_Lechu
                 //Draw
                 //TODO: move to scene manager etc.
                 var renderTarget = game.RenderTarget;
+                var positionGenerator = new PositionGenerator()
+                {
+                    SizeX = renderTarget.Size.X,
+                    SizeY = renderTarget.Size.Y,
+                    Frequency = 30,
+                    Scale = 100
+                };
 
                 foreach (var card in testEntCards)
                 {
-                    renderTarget.Clear();
-                    renderTarget.Draw(card.Sprite);
-                    renderTarget.Display();
+                    int currentX = 0;
+                    card.Sprite.Position= new Vector2f(0, renderTarget.Size.Y);
+                    while(currentX < renderTarget.Size.X)
+                    {
+                        renderTarget.Clear();
+                        Console.WriteLine(String.Format("x = {0} y = {1}", card.Sprite.Position.X, card.Sprite.Position.Y));
+                        card.Sprite.Position = positionGenerator.GetPositionByWindowVector(currentX);
+                        renderTarget.Draw(card.Sprite);
+                        renderTarget.Display();
+                        currentX++;
+                    }
                 }
+                
 
                 //Update state
             }

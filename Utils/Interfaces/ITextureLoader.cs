@@ -5,6 +5,6 @@ namespace game_loop_skeleton.Utils.Interfaces
 {
     public interface ITextureLoader
     {
-        Sprite GetTextureFrom(string bitmap);
+        IList<Texture> GetTexturesFrom(string bitmap);
     }
 }

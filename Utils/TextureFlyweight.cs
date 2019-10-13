@@ -21,7 +21,7 @@ namespace game_loop_skeleton.Utils
 
         public void Initialize()
         {
-            Textures = _textureLoader?.GetTextureFrom(_spriteSheetPath);
+            Textures = _textureLoader?.GetTexturesFrom(_spriteSheetPath);
         }
 
     }

@@ -30,7 +30,7 @@ namespace game_loop_skeleton.Systems
             {
                 if (disposing)
                 {
-                    _backgroundMusic.Dispose();
+                    _backgroundMusic?.Dispose();
                 }
 
                 disposedValue = true;

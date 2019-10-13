@@ -15,6 +15,10 @@ namespace SFML_Lechu
             using (var game = Game.Instance)
             {
                 //Scribbles/debug
+                game.RenderTarget.Closed += (o, e) =>
+                {
+                    game.IsRunning = false;
+                };
                 var rand = new Random();
                 var textureLoader = new TextureLoader();
 

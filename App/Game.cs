@@ -26,7 +26,7 @@ namespace SFML_Lechu.App
             {
                 if (disposing)
                 {
-                    _gameWindow.Dispose();
+                    _gameWindow.Close();
                 }
 
                 disposedValue = true;

@@ -20,13 +20,13 @@ namespace SFML_Lechu
                     game.IsRunning = false;
                 };
                 var textureLoader = new TextureLoader();
-                var textureFlyweight = new TextureFlyweight(@"res\ace.png", textureLoader);
+                var textureFlyweight = new TextureFlyweight(@"res/ace.png", textureLoader);
                 textureFlyweight.Initialize();
                 var renderTarget = game.RenderTarget;
 
                 var testEntCards = new List<Card> { new Card(textureFlyweight, deckIndex: 0) };
 
-                var bg = new Backgroud(@"res\bg.png", renderTarget.Size.X, renderTarget.Size.Y);
+                var bg = new Backgroud(@"res/bg.png", renderTarget.Size.X, renderTarget.Size.Y);
 
 
                 //Generate

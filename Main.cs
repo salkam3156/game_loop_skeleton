@@ -4,6 +4,7 @@ using game_loop_skeleton.Utils;
 using System;
 using game_loop_skeleton.Entities;
 using SFML.Window;
+using game_loop_skeleton.Systems;
 
 namespace SFML_Lechu
 {
@@ -11,19 +12,15 @@ namespace SFML_Lechu
     {
         static void Main(string[] args)
         {
-
             using (var game = Game.Instance)
+            using (var musicPlayer = new MusicPlayer())
             {
                 //Scribbles/debug
-                game.RenderTarget.Closed += (o, e) =>
-                {
-                    game.IsRunning = false;
-                };
+                game.RenderTarget.Closed += (o, e) => { game.IsRunning = false; };
                 var textureLoader = new TextureLoader();
                 var textureFlyweight = new TextureFlyweight(@"res/ace.png", textureLoader);
                 textureFlyweight.Initialize();
                 var renderTarget = game.RenderTarget;
-
                 var testEntCards = new List<Card> { new Card(textureFlyweight, deckIndex: 0) };
 
                 var bg = new Backgroud(@"res/bg.png", renderTarget.Size.X, renderTarget.Size.Y);

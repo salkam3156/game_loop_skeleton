@@ -1,6 +1,6 @@
 using SFML.Graphics;
 
-namespace SFML_Lechu.Systems
+namespace SFML_Lechu.Utils
 {
     public class ShapeGenerator<T> where T : Shape, new()
     {

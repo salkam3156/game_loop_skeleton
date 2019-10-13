@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using game_loop_skeleton.Utils.Interfaces;
 using SFML.Graphics;

@@ -1,10 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using game_loop_skeleton.Utils.Interfaces;
 using SFML.Graphics;
 
-namespace game_loop_skeleton.Utils
+namespace game_loop_skeleton.Entities
 {
     public class Backgroud
     {
@@ -14,7 +10,7 @@ namespace game_loop_skeleton.Utils
         {
             Sprite = new Sprite(new Texture(backgroudPicturePath) { Repeated = true })
             {
-                TextureRect = new IntRect(0, 0, (int) sizeX, (int) sizeY)
+                TextureRect = new IntRect(0, 0, (int)sizeX, (int)sizeY)
             };
         }
     }

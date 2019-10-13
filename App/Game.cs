@@ -8,15 +8,13 @@ namespace SFML_Lechu.App
     {
         private static RenderWindow _gameWindow;
         public RenderWindow RenderTarget => _gameWindow;
-        public bool IsRunning => _gameWindow.IsOpen;
+        public bool IsRunning { get; set; } = false;
         private static Lazy<Game> _instance = new Lazy<Game>(() => new Game());
-        public static Game Instance
-        {
-            get { return _instance.Value; }
-        }
+        public static Game Instance => _instance.Value;
         private Game()
         {
-            _gameWindow = new RenderWindow(VideoMode.DesktopMode, "AppWindow");
+            _gameWindow = new RenderWindow(VideoMode.DesktopMode, "Solitaire");
+            IsRunning = true;
         }
 
         #region Dispose
@@ -28,7 +26,7 @@ namespace SFML_Lechu.App
             {
                 if (disposing)
                 {
-                    _gameWindow.Dispose();
+                    _gameWindow.Close();
                 }
 
                 disposedValue = true;

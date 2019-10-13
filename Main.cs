@@ -1,41 +1,59 @@
 ﻿using System.Collections.Generic;
-using SFML.Graphics;
 using SFML_Lechu.App;
-using SFML.System;
+using game_loop_skeleton.Utils;
+using System;
+using game_loop_skeleton.Entities;
+using SFML.Window;
 
 namespace SFML_Lechu
 {
     class MainApp
     {
-        //TODO: manager / system for shape generation on per-interval basis
-        private static IList<RectangleShape> _rectangles = new List<RectangleShape>() {
-            new RectangleShape(new Vector2f(50.0f, 50.0f)) {Position = new Vector2f(10.0f, 10.0f)},
-            new RectangleShape(new Vector2f(50.0f, 50.0f)) {Position = new Vector2f(20.0f, 20.0f)},
-            new RectangleShape(new Vector2f(50.0f, 50.0f)) {Position = new Vector2f(30.0f, 30.0f)},
-            new RectangleShape(new Vector2f(50.0f, 50.0f)) {Position = new Vector2f(40.0f, 40.0f)},
-        };
-
         static void Main(string[] args)
         {
+
             using (var game = Game.Instance)
             {
+                //Scribbles/debug
+                game.RenderTarget.Closed += (o, e) =>
+                {
+                    game.IsRunning = false;
+                };
+                var textureLoader = new TextureLoader();
+                var textureFlyweight = new TextureFlyweight(@"res\ace.png", textureLoader);
+                textureFlyweight.Initialize();
+                var renderTarget = game.RenderTarget;
+
+                var testEntCards = new List<Card> { new Card(textureFlyweight, deckIndex: 0) };
+
+                var bg = new Backgroud(@"res\bg.png", renderTarget.Size.X, renderTarget.Size.Y);
+
+
                 //Generate
 
-                //Handle input
-
-                //Draw
-                //TODO: move to scene manager etc.
-                var renderTarget = game.RenderTarget;
-                renderTarget.Clear();
-
-                foreach (var rect in _rectangles)
+                //Loop
+                while (game.IsRunning)
                 {
-                    renderTarget.Draw(rect as Drawable);
+                    //Handle input
+                    //TODO: placeholder before proper input handling is implemented
+                    game.RenderTarget.DispatchEvents();
+                    if (Keyboard.IsKeyPressed(Keyboard.Key.Escape))
+                    {
+                        game.IsRunning = false;
+                    }
+                    //Draw
+                    renderTarget.Clear();
+                    renderTarget.Draw(bg.Sprite);
+
+                    foreach (var card in testEntCards)
+                    {
+                        renderTarget.Draw(card.Sprite);
+                    }
+
+                    renderTarget.Display();
+
+                    //Update state
                 }
-
-                renderTarget.Display();
-
-                //Update state
             }
         }
     }

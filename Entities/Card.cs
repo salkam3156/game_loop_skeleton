@@ -16,10 +16,15 @@ namespace game_loop_skeleton.Entities
         {
             return Sprite.Position;
         }
+        public Vector2f GetDimensions()
+        {
+            return new Vector2f(Sprite.TextureRect.Width, Sprite.TextureRect.Height);
+        }
 
         public void Move(Vector2f position)
         {
             Sprite.Position = position;
         }
+
     }
 }

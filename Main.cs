@@ -1,13 +1,9 @@
 ﻿using System.Collections.Generic;
-using SFML.Graphics;
 using SFML_Lechu.App;
-using SFML.System;
 using game_loop_skeleton.Utils;
 using System;
-
-using System.Threading.Tasks;
-using System.Threading;
 using game_loop_skeleton.Entities;
+using SFML.Window;
 
 namespace SFML_Lechu
 {
@@ -25,28 +21,36 @@ namespace SFML_Lechu
                 var textureFlyweight = new TextureFlyweight(@"res\ace.png", textureLoader);
                 textureFlyweight.Initialize();
                 var testEntCards = new List<Card> { new Card(textureFlyweight, deckIndex: 0) };
-
-
-
-                //Generate
-
-                //Handle input
-
-                //Draw
-                //TODO: move to scene manager etc.
                 var renderTarget = game.RenderTarget;
 
                 var bg = new Backgroud(@"res\bg.png", renderTarget.Size.X, renderTarget.Size.Y);
 
-                foreach (var card in testEntCards)
-                {
-                    renderTarget.Clear();
-                    renderTarget.Draw(bg.Sprite); 
-                    renderTarget.Draw(card.Sprite);
-                    renderTarget.Display();
-                }
 
-                //Update state
+                //Generate
+
+                //Loop
+                while (game.IsRunning)
+                {
+                    //Handle input
+                    //TODO: placeholder before proper input handling is implemented
+                    game.RenderTarget.DispatchEvents();
+                    if (Keyboard.IsKeyPressed(Keyboard.Key.Escape))
+                    {
+                        game.IsRunning = false;
+                    }
+                    //Draw
+                    renderTarget.Clear();
+                    renderTarget.Draw(bg.Sprite);
+
+                    foreach (var card in testEntCards)
+                    {
+                        renderTarget.Draw(card.Sprite);
+                    }
+
+                    renderTarget.Display();
+
+                    //Update state
+                }
             }
         }
     }

@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using SFML.Audio;
 
 namespace game_loop_skeleton.Systems
@@ -8,7 +9,18 @@ namespace game_loop_skeleton.Systems
         private Music _backgroundMusic;
         public void Load(string audioFilePath)
         {
-            _backgroundMusic = new Music(audioFilePath);
+            try
+            {
+                _backgroundMusic = new Music(audioFilePath);
+            }
+            catch (FileNotFoundException ex)
+            {
+                //TODO: Logging
+            }
+            catch (Exception ex)
+            {
+                //TODO: Logging
+            }
         }
 
         public void Play()

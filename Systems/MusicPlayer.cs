@@ -13,12 +13,12 @@ namespace game_loop_skeleton.Systems
 
         public void Play()
         {
-            _backgroundMusic.Play();
+            _backgroundMusic?.Play();
         }
 
         public void Stop()
         {
-            _backgroundMusic.Stop();
+            _backgroundMusic?.Stop();
         }
 
         #region IDisposable Support

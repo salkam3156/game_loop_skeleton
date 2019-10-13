@@ -17,7 +17,6 @@ namespace game_loop_skeleton.Utils
         {
             _spriteSheetPath = spriteSheetPath;
             _textureLoader = textureLoader;
-            //TODO: walk the spritesheet to build a matrix of images to hold a reference to
         }
 
         public void Initialize()

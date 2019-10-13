@@ -9,6 +9,7 @@ namespace game_loop_skeleton.Utils
     {
         public IList<Texture> GetTexturesFrom(string spritesheetPath)
         {
+            //TODO: walk the spritesheet to build a matrix of images to hold a reference to
             return new List<Texture> { new Texture(spritesheetPath) };
         }
     }

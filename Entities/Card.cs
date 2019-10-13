@@ -4,7 +4,7 @@ using SFML.System;
 
 namespace game_loop_skeleton.Entities
 {
-    public class Card : IEntity
+    public class Card : IGameObject
     {
         public Sprite Sprite { get; }
         public Card(TextureFlyweight textureFlyweight, /*placeholder for now*/ int deckIndex)

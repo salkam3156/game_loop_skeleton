@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using game_loop_skeleton.Entities;
 using SFML.System;
 using SFML.Window;
-using static SFML.Window.Mouse;
 
 namespace game_loop_skeleton.Systems
 {
@@ -19,7 +18,7 @@ namespace game_loop_skeleton.Systems
         {
             ICommand mouseMoveCommand = null;
 
-            if (Mouse.IsButtonPressed(Button.Left))
+            if (Mouse.IsButtonPressed(SFML.Window.Mouse.Button.Left))
             {
                 foreach (var gameObject in _objects)
                 {

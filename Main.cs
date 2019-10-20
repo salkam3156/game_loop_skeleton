@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using SFML.System;
+using SFML.Window;
 using SFML_Lechu.App;
+using System.Collections.Generic;
 using game_loop_skeleton.Utils;
 using game_loop_skeleton.Entities;
-using SFML.Window;
 using game_loop_skeleton.Systems;
-using SFML.System;
 
 namespace SFML_Lechu
 {

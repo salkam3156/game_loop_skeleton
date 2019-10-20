@@ -31,16 +31,12 @@ namespace SFML_Lechu
                 var mouseInputHandler = new MouseInputHandler(new MouseHoverDetector(), testEntCards);
                 var bg = new Backgroud(@"res/bg.png", renderTarget.Size.X, renderTarget.Size.Y);
 
-
-
-                //Generate
-
                 //Loop
                 while (game.IsRunning)
                 {
-                    game.RenderTarget.DispatchEvents();
                     if (clock.ElapsedTime >= logicUpdateTime)
                     {
+                        game.RenderTarget.DispatchEvents();
 
                         //Handle input
                         //TODO: placeholder before proper input handling is implemented

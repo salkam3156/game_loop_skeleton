@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using game_loop_skeleton.Utils;
 using game_loop_skeleton.Entities;
 using game_loop_skeleton.Systems;
+using SFML.Graphics;
 
 namespace SFML_Lechu
 {
@@ -21,13 +22,17 @@ namespace SFML_Lechu
                 var frameTime = Time.FromMilliseconds(1000 / framerPerSecond);
 
                 game.RenderTarget.Closed += (o, e) => { game.IsRunning = false; };
-                var textureLoader = new TextureLoader();
+                var textureLoader = new TextureLoader(@"res/cardsSpriteSheet.png", 10, 4);
                 var textureFlyweight = new TextureFlyweight(@"res/ace.png", textureLoader);
                 textureFlyweight.Initialize();
                 var renderTarget = game.RenderTarget;
                 var testEntCards = new List<IGameObject> { new Card(textureFlyweight, deckIndex: 0) };
                 var mouseInputHandler = new MouseInputHandler(new MouseHoverDetector(), testEntCards);
                 var bg = new Backgroud(@"res/bg.png", renderTarget.Size.X, renderTarget.Size.Y);
+
+                var texture = new Texture(@"res/cardsSpriteSheet.png");
+                var textureRectangle = new IntRect(0, 0, (int)texture.Size.X / 10, (int)texture.Size.Y / 4);
+                var sprite = new Sprite(texture, textureRectangle);
 
 
                 //Generate

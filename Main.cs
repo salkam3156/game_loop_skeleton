@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using SFML.System;
+using SFML.Window;
 using SFML_Lechu.App;
+using System.Collections.Generic;
 using game_loop_skeleton.Utils;
 using game_loop_skeleton.Entities;
-using SFML.Window;
 using game_loop_skeleton.Systems;
 using SFML.Graphics;
 
@@ -16,6 +17,10 @@ namespace SFML_Lechu
             using (var musicPlayer = new MusicPlayer())
             {
                 //Scribbles/debug
+                var clock = new Clock();
+                var framerPerSecond = 60;
+                var frameTime = Time.FromMilliseconds(1000 / framerPerSecond);
+
                 game.RenderTarget.Closed += (o, e) => { game.IsRunning = false; };
                 var textureLoader = new TextureLoader();
                 var textureFlyweight = new TextureFlyweight(@"res/ace.png", textureLoader);
@@ -35,6 +40,7 @@ namespace SFML_Lechu
                 //Loop
                 while (game.IsRunning)
                 {
+
                     game.RenderTarget.DispatchEvents();
 
                     //Handle input
@@ -48,15 +54,21 @@ namespace SFML_Lechu
                     commandToExecute?.ExecuteOn(testEntCards[0]);
 
                     //Draw
-                    renderTarget.Clear();
-                    renderTarget.Draw(bg.Sprite);
-
-                    foreach (var card in testEntCards)
+                    if (clock.ElapsedTime >= frameTime)
                     {
-                        renderTarget.Draw(card.Sprite);
+                        clock.Restart();
+
+                        renderTarget.Clear();
+                        renderTarget.Draw(bg.Sprite);
+
+                        foreach (var card in testEntCards)
+                        {
+                            renderTarget.Draw(card.Sprite);
+                        }
+
+                        renderTarget.Display();
                     }
 
-                    renderTarget.Display();
 
                     //Update state
                 }

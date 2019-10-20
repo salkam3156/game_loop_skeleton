@@ -24,8 +24,6 @@ namespace game_loop_skeleton.Entities
         public void Move(Vector2f position)
         {
             Sprite.Position = new Vector2f(position.X - Sprite.TextureRect.Width / 2, position.Y - Sprite.TextureRect.Height / 2);
-
-
         }
 
     }

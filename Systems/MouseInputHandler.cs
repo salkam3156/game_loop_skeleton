@@ -9,11 +9,11 @@ namespace game_loop_skeleton.Systems
     public class MouseInputHandler : IInputHandler
     {
         private readonly MouseHoverDetector _hoverDetector;
-        private readonly IList<IGameObject> _cards;
+        private readonly IList<IGameObject> _objects;
         public MouseInputHandler(MouseHoverDetector hoverDetector, IList<IGameObject> cards)
         {
             _hoverDetector = hoverDetector;
-            _cards = cards;
+            _objects = cards;
         }
         public ICommand HandleInput()
         {
@@ -21,9 +21,9 @@ namespace game_loop_skeleton.Systems
 
             if (Mouse.IsButtonPressed(Button.Left))
             {
-                foreach (var card in _cards)
+                foreach (var gameObject in _objects)
                 {
-                    if (_hoverDetector.IsHoveringOver(card))
+                    if (_hoverDetector.IsHoveringOver(gameObject))
                     {
                         //TODO: we already have the value in the detector - refactor
                         var mousePos = Mouse.GetPosition();

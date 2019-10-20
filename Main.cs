@@ -22,7 +22,7 @@ namespace SFML_Lechu
                 var frameTime = Time.FromMilliseconds(1000 / framerPerSecond);
 
                 game.RenderTarget.Closed += (o, e) => { game.IsRunning = false; };
-                var textureLoader = new TextureLoader(@"res/cardsSpriteSheet.png", 10, 4);
+                var textureLoader = new TextureLoader(@"res/testCards.jpg", 3, 4);
                 var textureFlyweight = new TextureFlyweight(@"res/ace.png", textureLoader);
                 textureFlyweight.Initialize();
                 var renderTarget = game.RenderTarget;

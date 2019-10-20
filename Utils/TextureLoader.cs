@@ -4,12 +4,12 @@ using SFML.Graphics;
 
 namespace game_loop_skeleton.Utils
 {
-    public class TextureLoader : ITextureLoader
+    public class TextureLoader : ISpriteLoader
     {
-        public IList<Texture> GetTexturesFrom(string spritesheetPath)
+        public IList<Sprite> GetSpritesFrom(string spritesheetPath, int columns, int rows)
         {
             //TODO: walk the spritesheet to build a matrix of images to hold a reference to
-            return new List<Texture> { new Texture(spritesheetPath) };
+            return new List<Sprite> { new Sprite(spritesheetPath) };
         }
     }
 }

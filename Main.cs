@@ -4,6 +4,7 @@ using game_loop_skeleton.Utils;
 using game_loop_skeleton.Entities;
 using SFML.Window;
 using game_loop_skeleton.Systems;
+using SFML.Graphics;
 
 namespace SFML_Lechu
 {
@@ -23,6 +24,10 @@ namespace SFML_Lechu
                 var testEntCards = new List<IGameObject> { new Card(textureFlyweight, deckIndex: 0) };
                 var mouseInputHandler = new MouseInputHandler(new MouseHoverDetector(), testEntCards);
                 var bg = new Backgroud(@"res/bg.png", renderTarget.Size.X, renderTarget.Size.Y);
+
+                var texture = new Texture(@"res/cardsSpriteSheet.png");
+                var textureRectangle = new IntRect(0, 0, (int)texture.Size.X / 10, (int)texture.Size.Y / 4);
+                var sprite = new Sprite(texture, textureRectangle);
 
 
                 //Generate

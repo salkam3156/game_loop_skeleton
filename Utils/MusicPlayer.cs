@@ -15,11 +15,11 @@ namespace game_loop_skeleton.Utils
             }
             catch (FileNotFoundException ex)
             {
-                //TODO: Logging
+                Console.WriteLine(ex.Message);
             }
             catch (Exception ex)
             {
-                //TODO: Logging
+                Console.WriteLine(ex.Message);
             }
         }
 

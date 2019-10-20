@@ -21,8 +21,8 @@ namespace SFML_Lechu
                 var textureFlyweight = new TextureFlyweight(@"res/ace.png", textureLoader);
                 textureFlyweight.Initialize();
                 var renderTarget = game.RenderTarget;
-                var testEntCards = new List<Card> { new Card(textureFlyweight, deckIndex: 0) };
-
+                var testEntCards = new List<IGameObject> { new Card(textureFlyweight, deckIndex: 0) };
+                var mouseInputHandler = new MouseInputHandler(new MouseHoverDetector(), testEntCards);
                 var bg = new Backgroud(@"res/bg.png", renderTarget.Size.X, renderTarget.Size.Y);
 
 
@@ -34,6 +34,7 @@ namespace SFML_Lechu
                     //Handle input
                     //TODO: placeholder before proper input handling is implemented
                     game.RenderTarget.DispatchEvents();
+                    mouseInputHandler.HandleInput();
                     if (Keyboard.IsKeyPressed(Keyboard.Key.Escape))
                     {
                         game.IsRunning = false;

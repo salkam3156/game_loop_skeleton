@@ -1,10 +1,35 @@
+using System.Collections.Generic;
+using game_loop_skeleton.Entities;
+using SFML.System;
+using SFML.Window;
+using static SFML.Window.Mouse;
+
 namespace game_loop_skeleton.Systems
 {
-    public class MouseInputHandler
+    public class MouseInputHandler : IInputHandler
     {
-        public MouseInputHandler()
+        private readonly MouseHoverDetector _hoverDetector;
+        private readonly IList<IGameObject> _cards;
+        public MouseInputHandler(MouseHoverDetector hoverDetector, IList<IGameObject> cards)
         {
+            _hoverDetector = hoverDetector;
+            _cards = cards;
+        }
 
+        public void HandleInput()
+        {
+            if (Mouse.IsButtonPressed(Button.Left))
+            {
+                foreach (var card in _cards)
+                {
+                    if (_hoverDetector.IsHoveringOver(card))
+                    {
+                        //TODO: we already have the value in the detector - refactor
+                        var mousePos = Mouse.GetPosition();
+                        card.Move(new Vector2f((float)mousePos.X, (float)mousePos.Y));
+                    }
+                }
+            }
         }
     }
 }

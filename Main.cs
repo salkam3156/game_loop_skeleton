@@ -20,10 +20,11 @@ namespace SFML_Lechu
                 var clock = new Clock();
                 var framerPerSecond = 60;
                 var frameTime = Time.FromMilliseconds(1000 / framerPerSecond);
+                var logicUpdateTime = frameTime / 2;
 
                 game.RenderTarget.Closed += (o, e) => { game.IsRunning = false; };
                 var textureLoader = new TextureLoader(@"res/testCards.jpg", 3, 4);
-                var textureFlyweight = new TextureFlyweight(@"res/ace.png", textureLoader);
+                var textureFlyweight = new TextureFlyweight(textureLoader);
                 textureFlyweight.Initialize();
                 var renderTarget = game.RenderTarget;
                 var testEntCards = new List<IGameObject> { new Card(textureFlyweight, deckIndex: 0) };
@@ -37,34 +38,37 @@ namespace SFML_Lechu
                 //Loop
                 while (game.IsRunning)
                 {
-
                     game.RenderTarget.DispatchEvents();
-
-                    //Handle input
-                    //TODO: placeholder before proper input handling is implemented
-                    if (Keyboard.IsKeyPressed(Keyboard.Key.Escape))
+                    if (clock.ElapsedTime >= logicUpdateTime)
                     {
-                        game.IsRunning = false;
-                    }
 
-                    var commandToExecute = mouseInputHandler.HandleInput();
-                    commandToExecute?.ExecuteOn(testEntCards[0]);
-
-                    //Draw
-                    if (clock.ElapsedTime >= frameTime)
-                    {
-                        clock.Restart();
-
-                        renderTarget.Clear();
-                        renderTarget.Draw(bg.Sprite);
-
-                        foreach (var card in testEntCards)
+                        //Handle input
+                        //TODO: placeholder before proper input handling is implemented
+                        if (Keyboard.IsKeyPressed(Keyboard.Key.Escape))
                         {
-                            renderTarget.Draw(card.Sprite);
+                            game.IsRunning = false;
                         }
 
-                        renderTarget.Display();
+                        var commandToExecute = mouseInputHandler.HandleInput();
+                        commandToExecute?.ExecuteOn(testEntCards[0]);
+
+                        if (clock.ElapsedTime >= frameTime)
+                        {
+                            clock.Restart();
+
+                            renderTarget.Clear();
+                            renderTarget.Draw(bg.Sprite);
+
+                            foreach (var card in testEntCards)
+                            {
+                                renderTarget.Draw(card.Sprite);
+                            }
+
+                            renderTarget.Display();
+                        }
                     }
+
+                    //Draw
 
 
                     //Update state

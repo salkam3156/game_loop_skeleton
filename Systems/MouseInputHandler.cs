@@ -15,9 +15,10 @@ namespace game_loop_skeleton.Systems
             _hoverDetector = hoverDetector;
             _cards = cards;
         }
-
-        public void HandleInput()
+        public ICommand HandleInput()
         {
+            ICommand mouseMoveCommand = null;
+
             if (Mouse.IsButtonPressed(Button.Left))
             {
                 foreach (var card in _cards)
@@ -26,10 +27,12 @@ namespace game_loop_skeleton.Systems
                     {
                         //TODO: we already have the value in the detector - refactor
                         var mousePos = Mouse.GetPosition();
-                        card.Move(new Vector2f((float)mousePos.X, (float)mousePos.Y));
+                        mouseMoveCommand = new MouseMoveCommand() { PointOfAction = new Vector2f((float)mousePos.X, (float)mousePos.Y) };
                     }
                 }
             }
+
+            return mouseMoveCommand;
         }
     }
 }

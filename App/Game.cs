@@ -14,6 +14,8 @@ namespace SFML_Lechu.App
         private Game()
         {
             _gameWindow = new RenderWindow(VideoMode.DesktopMode, "Solitaire");
+            _gameWindow.SetFramerateLimit(60);
+
             IsRunning = true;
         }
 

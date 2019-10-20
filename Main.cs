@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using SFML_Lechu.App;
 using game_loop_skeleton.Utils;
-using System;
 using game_loop_skeleton.Entities;
 using SFML.Window;
 using game_loop_skeleton.Systems;
@@ -31,14 +30,18 @@ namespace SFML_Lechu
                 //Loop
                 while (game.IsRunning)
                 {
+                    game.RenderTarget.DispatchEvents();
+
                     //Handle input
                     //TODO: placeholder before proper input handling is implemented
-                    game.RenderTarget.DispatchEvents();
-                    mouseInputHandler.HandleInput();
                     if (Keyboard.IsKeyPressed(Keyboard.Key.Escape))
                     {
                         game.IsRunning = false;
                     }
+
+                    var commandToExecute = mouseInputHandler.HandleInput();
+                    commandToExecute?.ExecuteOn(testEntCards[0]);
+
                     //Draw
                     renderTarget.Clear();
                     renderTarget.Draw(bg.Sprite);

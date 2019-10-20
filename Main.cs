@@ -56,6 +56,7 @@ namespace SFML_Lechu
                         {
                             clock.Restart();
 
+                            //Draw
                             renderTarget.Clear();
                             renderTarget.Draw(bg.Sprite);
 
@@ -68,7 +69,6 @@ namespace SFML_Lechu
                         }
                     }
 
-                    //Draw
 
 
                     //Update state

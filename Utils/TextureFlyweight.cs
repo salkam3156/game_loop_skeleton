@@ -6,20 +6,20 @@ namespace game_loop_skeleton.Utils
 {
     public class TextureFlyweight
     {
-        public IList<Sprite> Textures { get; private set; } = new List<Sprite>();
-        private readonly ISpriteLoader _textureLoader;
+        public IEnumerable<Sprite> Textures { get; private set; } = new List<Sprite>();
+        private readonly IImageLoader _imageLoader;
         public readonly string _spriteSheetPath;
 
         //TODO: refactor after TextureLoader has been implemented
-        public TextureFlyweight(string spriteSheetPath, ISpriteLoader textureLoader)
+        public TextureFlyweight(string spriteSheetPath, IImageLoader textureLoader)
         {
             _spriteSheetPath = spriteSheetPath;
-            _textureLoader = textureLoader;
+            _imageLoader = textureLoader;
         }
 
         public void Initialize()
         {
-            Textures = _textureLoader?.GetSpritesFrom(_spriteSheetPath);
+            Textures = _imageLoader?.GetSprites();
         }
 
     }

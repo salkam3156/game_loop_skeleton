@@ -3,8 +3,8 @@ using SFML.Graphics;
 
 namespace game_loop_skeleton.Utils.Interfaces
 {
-    public interface ISpriteLoader
+    public interface IImageLoader
     {
-        IList<Sprite> GetSpritesFrom(string bitmap, int columns, int rows);
+        IEnumerable<Sprite> GetSprites();
     }
 }

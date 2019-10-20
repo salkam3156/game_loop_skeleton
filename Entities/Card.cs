@@ -9,7 +9,9 @@ namespace game_loop_skeleton.Entities
         public Sprite Sprite { get; }
         public Card(TextureFlyweight textureFlyweight, /*placeholder for now*/ int deckIndex)
         {
-            Sprite = new Sprite(textureFlyweight.Textures[deckIndex]);
+            var texiter = textureFlyweight.Textures.GetEnumerator();
+            texiter.MoveNext();
+            Sprite = new Sprite(texiter.Current);
         }
 
         public Vector2f GetPosition()

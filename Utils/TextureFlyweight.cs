@@ -7,10 +7,10 @@ namespace game_loop_skeleton.Utils
     public class TextureFlyweight
     {
         public IEnumerable<Sprite> Textures { get; private set; } = new List<Sprite>();
-        private readonly IImageLoader _imageLoader;
-        public TextureFlyweight(IImageLoader textureLoader)
+        private readonly ISpriteSheetLoader _imageLoader;
+        public TextureFlyweight(ISpriteSheetLoader spriteSheetLoader)
         {
-            _imageLoader = textureLoader;
+            _imageLoader = spriteSheetLoader;
         }
         public void Initialize()
         {

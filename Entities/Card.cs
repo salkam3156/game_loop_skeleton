@@ -6,12 +6,10 @@ namespace game_loop_skeleton.Entities
 {
     public class Card : IGameObject
     {
-        public Sprite Sprite { get; }
-        public Card(TextureFlyweight textureFlyweight, /*placeholder for now*/ int deckIndex)
+        public Sprite Sprite { get; private set; }
+        public Card(Sprite sprite, /*placeholder for now*/ int deckIndex)
         {
-            var texiter = textureFlyweight.Textures.GetEnumerator();
-            texiter.MoveNext();
-            Sprite = new Sprite(texiter.Current);
+            Sprite = sprite;
         }
 
         public Vector2f GetPosition()

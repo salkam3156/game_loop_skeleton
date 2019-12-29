@@ -26,14 +26,11 @@ namespace SFML_Lechu
                 var logicUpdateTime = frameTime / 2;
 
                 game.RenderTarget.Closed += (o, e) => { game.IsRunning = false; };
-                var textureLoader = new TextureLoader(@"res/testCards.jpg", 3, 4);
-
-                var textureFlyweight = new TextureFlyweight(textureLoader);
-                textureFlyweight.Initialize();
+                var textureLoader = new TextureLoader();
 
                 var renderTarget = game.RenderTarget;
                 // TODO: some deck factory
-                var testEntCards = new List<IGameObject> { new Card(textureFlyweight, deckIndex: 0), new Card(textureFlyweight, deckIndex: 1) };
+                var testEntCards = new List<IGameObject> { new Card(textureLoader.GetSprite(@"res/Club_3.png"), deckIndex: 0), new Card(textureLoader.GetSprite(@"res/Spade_3.png"), deckIndex: 1) };
                 var mouseInputHandler = new MouseInputHandler(new MouseHoverDetector(renderTarget), testEntCards);
                 // TODO: a screen class that would encapsulate the background drawing as a part of Refresh etc. 
                 var bg = new Backgroud(@"res/bg.png", renderTarget.Size.X, renderTarget.Size.Y);

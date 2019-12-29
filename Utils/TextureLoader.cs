@@ -5,28 +5,19 @@ using SFML.Graphics;
 
 namespace game_loop_skeleton.Utils
 {
-    public class TextureLoader : ISpriteSheetLoader
+    public class TextureLoader : IImageLoader
     {
-        private readonly string _spriteSheetPath;
-        private readonly int _columns;
-        private readonly int _rows;
-        public TextureLoader(string spritesheetPath, int columns, int rows)
+        public IEnumerable<Sprite> GetSprites(string spriteSheetPath, int columns, int rows)
         {
-            _spriteSheetPath = spritesheetPath;
-            _columns = columns;
-            _rows = rows;
-        }
-        public IEnumerable<Sprite> GetSprites()
-        {
-            if (!File.Exists(_spriteSheetPath)) throw new FileNotFoundException($"The file {_spriteSheetPath} does not exist");
+            if (!File.Exists(spriteSheetPath)) throw new FileNotFoundException($"The file {spriteSheetPath} does not exist");
 
-            var spriteSheet = new Texture(_spriteSheetPath);
-            var columnWidth = (int)spriteSheet.Size.X / _columns;
-            var rowHeight = (int)spriteSheet.Size.Y / _rows;
+            var spriteSheet = new Texture(spriteSheetPath);
+            var columnWidth = (int)spriteSheet.Size.X / columns;
+            var rowHeight = (int)spriteSheet.Size.Y / rows;
 
-            for (int i = 0; i < _rows; i++)
+            for (int i = 0; i < rows; i++)
             {
-                for (int j = 0; j < _columns; j++)
+                for (int j = 0; j < columns; j++)
                 {
                     yield return new Sprite(spriteSheet, new IntRect(
                         (j * columnWidth), (i * rowHeight),
@@ -34,6 +25,11 @@ namespace game_loop_skeleton.Utils
                     ));
                 }
             }
+        }
+
+        public Sprite GetSprite(string spritePath)
+        {
+            return new Sprite(new Texture(spritePath));
         }
     }
 }

@@ -11,10 +11,11 @@ namespace SFML_Lechu.App
         public bool IsRunning { get; set; } = false;
         private static Lazy<Game> _instance = new Lazy<Game>(() => new Game());
         public static Game Instance => _instance.Value;
+
+
         private Game()
         {
             _gameWindow = new RenderWindow(VideoMode.DesktopMode, "Solitaire");
-            _gameWindow.SetFramerateLimit(60);
 
             IsRunning = true;
         }

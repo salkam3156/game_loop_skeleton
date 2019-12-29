@@ -1,19 +1,19 @@
 ﻿using SFML.System;
 using SFML.Window;
-using SFML_Lechu.App;
+using Game.App;
 using System.Collections.Generic;
-using game_loop_skeleton.Utils;
-using game_loop_skeleton.Entities;
-using game_loop_skeleton.Systems;
+using Game.Utils;
+using Game.Entities;
+using Game.Systems;
 using SFML.Graphics;
 
-namespace SFML_Lechu
+namespace Game
 {
     class MainApp
     {
         static void Main(string[] args)
         {
-            using (var game = Game.Instance)
+            using (var game = App.Game.Instance)
             using (var musicPlayer = new MusicPlayer())
             {
                 //Scribbles/debug

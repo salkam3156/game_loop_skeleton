@@ -1,6 +1,6 @@
 using SFML.Graphics;
 
-namespace game_loop_skeleton.Entities
+namespace Game.Entities
 {
     public class Backgroud
     {

@@ -1,4 +1,4 @@
-namespace game_loop_skeleton.Systems
+namespace Game.Systems
 {
     public interface IInputHandler
     {

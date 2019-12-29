@@ -1,8 +1,8 @@
 using SFML.Graphics;
-using game_loop_skeleton.Utils;
+using Game.Utils;
 using SFML.System;
 
-namespace game_loop_skeleton.Entities
+namespace Game.Entities
 {
     public class Card : IGameObject
     {

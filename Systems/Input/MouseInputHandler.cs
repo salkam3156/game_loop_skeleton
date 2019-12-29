@@ -1,10 +1,9 @@
 using System.Collections.Generic;
-using game_loop_skeleton.Entities;
-using SFML.Graphics;
+using Game.Entities;
 using SFML.System;
 using SFML.Window;
 
-namespace game_loop_skeleton.Systems
+namespace Game.Systems
 {
     public class MouseInputHandler : IInputHandler
     {

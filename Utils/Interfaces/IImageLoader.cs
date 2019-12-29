@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using SFML.Graphics;
 
-namespace game_loop_skeleton.Utils.Interfaces
+namespace Game.Utils.Interfaces
 {
     public interface IImageLoader
     {

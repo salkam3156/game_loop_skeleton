@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace game_loop_skeleton.Entities
+namespace Game.Entities
 {
     public class Deck
     {

@@ -1,7 +1,7 @@
 using SFML.Graphics;
 using SFML.System;
 
-namespace game_loop_skeleton.Entities
+namespace Game.Entities
 {
     public interface IGameObject
     {

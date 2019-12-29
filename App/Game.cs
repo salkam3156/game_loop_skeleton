@@ -2,7 +2,7 @@ using System;
 using SFML.Graphics;
 using SFML.Window;
 
-namespace SFML_Lechu.App
+namespace Game.App
 {
     public class Game : IDisposable
     {

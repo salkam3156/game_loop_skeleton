@@ -1,8 +1,8 @@
-using game_loop_skeleton.Entities;
+using Game.Entities;
 using SFML.Graphics;
 using SFML.Window;
 
-namespace game_loop_skeleton.Systems
+namespace Game.Systems
 {
     public class MouseHoverDetector
     {

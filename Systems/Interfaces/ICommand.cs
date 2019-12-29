@@ -1,7 +1,7 @@
-using game_loop_skeleton.Entities;
+using Game.Entities;
 using SFML.System;
 
-namespace game_loop_skeleton.Systems
+namespace Game.Systems
 {
     public interface ICommand
     {

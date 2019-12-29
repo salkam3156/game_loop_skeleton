@@ -18,7 +18,7 @@ namespace SFML_Lechu
             {
                 //Scribbles/debug
                 musicPlayer.Load("res/music.ogg");
-                musicPlayer.Play();
+                // musicPlayer.Play();
 
                 var clock = new Clock();
                 var framerPerSecond = 60;
@@ -46,7 +46,6 @@ namespace SFML_Lechu
                         game.RenderTarget.DispatchEvents();
 
                         //Handle input
-                        //TODO: placeholder before proper input handling is implemented
                         if (Keyboard.IsKeyPressed(Keyboard.Key.Escape))
                         {
                             game.IsRunning = false;

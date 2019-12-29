@@ -1,4 +1,5 @@
 using game_loop_skeleton.Entities;
+using SFML.Graphics;
 using SFML.Window;
 
 namespace game_loop_skeleton.Systems
@@ -7,9 +8,15 @@ namespace game_loop_skeleton.Systems
     {
         //TODO: A POC; this will be inefficient for now
         //TODO: check behaviour on scaled screen dims - the values for texture dimensions might not scale to the skew applied
+        public RenderWindow RenderWindow { get; private set; }
+
+        public MouseHoverDetector(RenderWindow renderWindow)
+        {
+            RenderWindow = renderWindow;
+        }
         public bool IsHoveringOver(IGameObject gameObject)
         {
-            var mousePos = Mouse.GetPosition();
+            var mousePos = Mouse.GetPosition(RenderWindow);
             var gameObjPos = gameObject.GetPosition();
             var gameObjDims = gameObject.GetDimensions();
 

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using game_loop_skeleton.Entities;
+using SFML.Graphics;
 using SFML.System;
 using SFML.Window;
 
@@ -25,7 +26,7 @@ namespace game_loop_skeleton.Systems
                     if (_hoverDetector.IsHoveringOver(gameObject))
                     {
                         //TODO: we already have the value in the detector - refactor
-                        var mousePos = Mouse.GetPosition();
+                        var mousePos = Mouse.GetPosition(_hoverDetector.RenderWindow);
                         mouseMoveCommand = new MouseMoveCommand() { PointOfAction = new Vector2f((float)mousePos.X, (float)mousePos.Y) };
                     }
                 }

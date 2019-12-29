@@ -28,7 +28,7 @@ namespace SFML_Lechu
                 textureFlyweight.Initialize();
                 var renderTarget = game.RenderTarget;
                 var testEntCards = new List<IGameObject> { new Card(textureFlyweight, deckIndex: 0) };
-                var mouseInputHandler = new MouseInputHandler(new MouseHoverDetector(), testEntCards);
+                var mouseInputHandler = new MouseInputHandler(new MouseHoverDetector(renderTarget), testEntCards);
                 var bg = new Backgroud(@"res/bg.png", renderTarget.Size.X, renderTarget.Size.Y);
 
                 //Loop

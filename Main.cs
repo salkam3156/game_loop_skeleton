@@ -17,6 +17,9 @@ namespace SFML_Lechu
             using (var musicPlayer = new MusicPlayer())
             {
                 //Scribbles/debug
+                musicPlayer.Load("res/music.ogg");
+                musicPlayer.Play();
+
                 var clock = new Clock();
                 var framerPerSecond = 60;
                 var frameTime = Time.FromMilliseconds(1000 / framerPerSecond);
@@ -24,11 +27,15 @@ namespace SFML_Lechu
 
                 game.RenderTarget.Closed += (o, e) => { game.IsRunning = false; };
                 var textureLoader = new TextureLoader(@"res/testCards.jpg", 3, 4);
+
                 var textureFlyweight = new TextureFlyweight(textureLoader);
                 textureFlyweight.Initialize();
+
                 var renderTarget = game.RenderTarget;
-                var testEntCards = new List<IGameObject> { new Card(textureFlyweight, deckIndex: 0) };
+                // TODO: some deck factory
+                var testEntCards = new List<IGameObject> { new Card(textureFlyweight, deckIndex: 0), new Card(textureFlyweight, deckIndex: 1) };
                 var mouseInputHandler = new MouseInputHandler(new MouseHoverDetector(renderTarget), testEntCards);
+                // TODO: a screen class that would encapsulate the background drawing as a part of Refresh etc. 
                 var bg = new Backgroud(@"res/bg.png", renderTarget.Size.X, renderTarget.Size.Y);
 
                 //Loop

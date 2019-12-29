@@ -42,6 +42,7 @@ namespace game_loop_skeleton.Utils
             {
                 if (disposing)
                 {
+                    Stop();
                     _backgroundMusic?.Dispose();
                 }
 

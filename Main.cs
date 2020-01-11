@@ -6,6 +6,7 @@ using Game.Utils;
 using Game.Entities;
 using Game.Systems;
 using SFML.Graphics;
+using System.Linq;
 
 namespace Game
 {
@@ -30,10 +31,9 @@ namespace Game
 
                 var renderTarget = game.RenderTarget;
                 // TODO: some deck factory
-                var testEntCards = new List<IGameObject> { new Card(textureLoader.GetSprite(@"res/Club_3.png"), deckIndex: 0), new Card(textureLoader.GetSprite(@"res/Spade_3.png"), deckIndex: 1) };
-                var mouseInputHandler = new MouseInputHandler(new MouseHoverDetector(renderTarget), testEntCards);
-                // TODO: a screen class that would encapsulate the background drawing as a part of Refresh etc. 
-                var bg = new Backgroud(@"res/bg.png", renderTarget.Size.X, renderTarget.Size.Y);
+                var collection = new List<IGameObject>();
+                var mouseInputHandler = new MouseInputHandler(new MouseHoverDetector(renderTarget), collection as IList<IGameObject>);
+                var bg = new Backgroud(@"res/bg.jpg", renderTarget.Size.X, renderTarget.Size.Y);
 
                 //Loop
                 while (game.IsRunning)
@@ -49,7 +49,6 @@ namespace Game
                         }
 
                         var commandToExecute = mouseInputHandler.HandleInput();
-                        commandToExecute?.ExecuteOn(testEntCards[0]);
 
                         if (clock.ElapsedTime >= frameTime)
                         {
@@ -58,11 +57,6 @@ namespace Game
                             //Draw
                             renderTarget.Clear();
                             renderTarget.Draw(bg.Sprite);
-
-                            foreach (var card in testEntCards)
-                            {
-                                renderTarget.Draw(card.Sprite);
-                            }
 
                             renderTarget.Display();
                         }

@@ -1,5 +1,4 @@
 using SFML.Graphics;
-using Game.Utils;
 using SFML.System;
 
 namespace Game.Entities

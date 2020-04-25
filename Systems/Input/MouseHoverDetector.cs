@@ -2,7 +2,7 @@ using Game.Entities;
 using SFML.Graphics;
 using SFML.Window;
 
-namespace Game.Systems
+namespace Game.Systems.Input
 {
     public class MouseHoverDetector
     {

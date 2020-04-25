@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using SFML.Audio;
 
-namespace Game.Utils
+namespace Game.Systems.Sound
 {
     public class MusicPlayer : IDisposable
     {

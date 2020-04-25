@@ -1,6 +1,6 @@
 using SFML.Graphics;
 
-namespace Game.Utils
+namespace Game.Systems.Graphics
 {
     public class ShapeGenerator<T> where T : Shape, new()
     {

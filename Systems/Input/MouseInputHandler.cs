@@ -1,9 +1,11 @@
 using System.Collections.Generic;
 using Game.Entities;
+using Game.Systems.Input.Commands;
+using Game.Systems.Input.Interfaces;
 using SFML.System;
 using SFML.Window;
 
-namespace Game.Systems
+namespace Game.Systems.Input
 {
     public class MouseInputHandler : IInputHandler
     {

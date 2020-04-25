@@ -1,7 +1,7 @@
 using Game.Entities;
 using SFML.System;
 
-namespace Game.Systems
+namespace Game.Systems.Input.Interfaces
 {
     public interface ICommand
     {

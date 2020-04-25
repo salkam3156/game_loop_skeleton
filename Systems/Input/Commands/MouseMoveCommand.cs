@@ -1,7 +1,8 @@
 using Game.Entities;
+using Game.Systems.Input.Interfaces;
 using SFML.System;
 
-namespace Game.Systems
+namespace Game.Systems.Input.Commands
 {
     public class MouseMoveCommand : ICommand
     {

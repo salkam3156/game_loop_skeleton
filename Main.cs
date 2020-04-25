@@ -1,9 +1,10 @@
 ﻿using SFML.System;
 using SFML.Window;
 using System.Collections.Generic;
-using Game.Utils;
 using Game.Entities;
-using Game.Systems;
+using Game.Systems.Graphics;
+using Game.Systems.Input;
+using Game.Systems.Sound;
 
 namespace Game
 {

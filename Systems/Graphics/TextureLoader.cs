@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.IO;
-using Game.Utils.Interfaces;
+using Game.Systems.Graphics.Interfaces;
 using SFML.Graphics;
 
-namespace Game.Utils
+namespace Game.Systems.Graphics
 {
     public class TextureLoader : IImageLoader
     {

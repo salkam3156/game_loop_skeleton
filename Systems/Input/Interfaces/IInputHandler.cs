@@ -1,4 +1,4 @@
-namespace Game.Systems
+namespace Game.Systems.Input.Interfaces
 {
     public interface IInputHandler
     {

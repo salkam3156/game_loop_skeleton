@@ -18,7 +18,6 @@ namespace Game
                 musicPlayer.Load("res/music/music.ogg");
                 // musicPlayer.Play();
 
-                new Deck().Initialize();
                 var clock = new Clock();
                 var framerPerSecond = 60;
                 var frameTime = Time.FromMilliseconds(1000 / framerPerSecond);
@@ -29,7 +28,7 @@ namespace Game
 
                 var renderTarget = game.RenderTarget;
                 // TODO: some deck factory
-                var testEntCards = new List<IGameObject> { new Card(textureLoader.GetSprite(@"res/card_sprites/Club_3.png"), deckIndex: 0), new Card(textureLoader.GetSprite(@"res/card_sprites/Spade_3.png"), deckIndex: 1) };
+                var testEntCards = new List<IGameObject> { new Card(textureLoader.GetSprite(@"res/card_sprites/Club_Three.png"), deckIndex: 0), new Card(textureLoader.GetSprite(@"res/card_sprites/Spade_three.png"), deckIndex: 1) };
                 var mouseInputHandler = new MouseInputHandler(new MouseHoverDetector(renderTarget), testEntCards);
                 // TODO: a screen class that would encapsulate the background drawing as a part of Refresh etc. 
                 var bg = new Backgroud(@"res/bg.png", renderTarget.Size.X, renderTarget.Size.Y);

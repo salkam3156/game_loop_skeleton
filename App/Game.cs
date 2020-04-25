@@ -29,7 +29,8 @@ namespace Game.App
             {
                 if (disposing)
                 {
-                    _gameWindow.Close();
+                    _gameWindow?.Close();
+                    _gameWindow?.Dispose();
                 }
 
                 disposedValue = true;

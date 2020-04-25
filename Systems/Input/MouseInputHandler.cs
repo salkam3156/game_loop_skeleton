@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Game.Entities;
 using Game.Systems.Input.Commands;
 using Game.Systems.Input.Interfaces;
@@ -22,19 +23,19 @@ namespace Game.Systems.Input
 
             if (Mouse.IsButtonPressed(SFML.Window.Mouse.Button.Left))
             {
-                foreach (var gameObject in _objects)
-                {
-                    if (_hoverDetector.IsHoveringOver(gameObject))
+                mouseMoveCommand = _objects
+                    .Where(obj => _hoverDetector.IsHoveringOver(obj))
+                    .Select(_ =>
                     {
                         //TODO: we already have the value in the detector - refactor
                         var mousePos = Mouse.GetPosition(_hoverDetector.RenderWindow);
 
-                        mouseMoveCommand = new MouseMoveCommand()
+                        return new MouseMoveCommand()
                         {
                             PointOfAction = new Vector2f((float)mousePos.X, (float)mousePos.Y)
                         };
-                    }
-                }
+                    })
+                    .FirstOrDefault();
             }
 
             return mouseMoveCommand;

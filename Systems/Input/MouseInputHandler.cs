@@ -28,7 +28,11 @@ namespace Game.Systems.Input
                     {
                         //TODO: we already have the value in the detector - refactor
                         var mousePos = Mouse.GetPosition(_hoverDetector.RenderWindow);
-                        mouseMoveCommand = new MouseMoveCommand() { PointOfAction = new Vector2f((float)mousePos.X, (float)mousePos.Y) };
+
+                        mouseMoveCommand = new MouseMoveCommand()
+                        {
+                            PointOfAction = new Vector2f((float)mousePos.X, (float)mousePos.Y)
+                        };
                     }
                 }
             }

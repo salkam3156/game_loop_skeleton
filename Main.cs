@@ -5,6 +5,7 @@ using Game.Entities;
 using Game.Systems.Graphics;
 using Game.Systems.Input;
 using Game.Systems.Sound;
+using game_loop_skeleton.Systems;
 
 namespace Game
 {
@@ -20,23 +21,26 @@ namespace Game
                 // musicPlayer.Play();
 
                 var clock = new Clock();
-                var framerPerSecond = 60;
-                var frameTime = Time.FromMilliseconds(1000 / framerPerSecond);
-                var logicUpdateTime = frameTime / 2;
+                var updateTimeModel = new UpdateTimeModel();
 
                 game.RenderTarget.Closed += (o, e) => { game.IsRunning = false; };
                 var textureLoader = new TextureLoader();
 
                 var renderTarget = game.RenderTarget;
                 // TODO: some deck factory
-                var testEntCards = new List<IGameObject> { new Card(textureLoader.GetSprite(@"res/card_sprites/Club_Three.png"), deckIndex: 0), new Card(textureLoader.GetSprite(@"res/card_sprites/Spade_three.png"), deckIndex: 1) };
+                var testEntCards = new List<IGameObject>
+                {
+                    new Card(textureLoader.GetSprite(@"res/card_sprites/Club_Three.png"), deckIndex: 0),
+                    new Card(textureLoader.GetSprite(@"res/card_sprites/Spade_three.png"), deckIndex: 1)
+                };
+
                 var mouseInputHandler = new MouseInputHandler(new MouseHoverDetector(renderTarget), testEntCards);
                 // TODO: a screen class that would encapsulate the background drawing as a part of Refresh etc. 
-                var bg = new Backgroud(@"res/bg.png", renderTarget.Size.X, renderTarget.Size.Y);
+                var background = new Backgroud(@"res/bg.png", renderTarget.Size.X, renderTarget.Size.Y);
                 //Loop
                 while (game.IsRunning)
                 {
-                    if (clock.ElapsedTime >= logicUpdateTime)
+                    if (clock.ElapsedTime.AsMilliseconds() >= updateTimeModel.LogicUpdateTime)
                     {
                         game.RenderTarget.DispatchEvents();
 
@@ -49,13 +53,13 @@ namespace Game
                         var commandToExecute = mouseInputHandler.HandleInput();
                         commandToExecute?.ExecuteOn(testEntCards[0]);
 
-                        if (clock.ElapsedTime >= frameTime)
+                        if (clock.ElapsedTime.AsMilliseconds() >= updateTimeModel.FrameTime)
                         {
                             clock.Restart();
 
                             //Draw
                             renderTarget.Clear();
-                            renderTarget.Draw(bg.Sprite);
+                            renderTarget.Draw(background.Sprite);
 
                             foreach (var card in testEntCards)
                             {
@@ -65,8 +69,6 @@ namespace Game
                             renderTarget.Display();
                         }
                     }
-
-
 
                     //Update state
                 }

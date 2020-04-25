@@ -8,8 +8,8 @@ namespace Game.Systems
     public class MouseInputHandler : IInputHandler
     {
         private readonly MouseHoverDetector _hoverDetector;
-        private readonly IList<IGameObject> _objects;
-        public MouseInputHandler(MouseHoverDetector hoverDetector, IList<IGameObject> cards)
+        private readonly IEnumerable<IGameObject> _objects;
+        public MouseInputHandler(MouseHoverDetector hoverDetector, IEnumerable<IGameObject> cards)
         {
             _hoverDetector = hoverDetector;
             _objects = cards;
